@@ -14,6 +14,9 @@ class FormBuilderServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadViewsFrom(__DIR__.'/resources/views', 'formbuilder');
+        $this->publishes([
+            __DIR__.'/public' => public_path('plugins/formbuilder'),
+        ], 'public');
     }
 
     /**
