@@ -34,6 +34,12 @@ class FormBuilder
         return view('formbuilder::form_builder', compact('fields', 'formAttrs'));
     }
 
+    public static function js()
+    {
+        self::reset();
+        return view('formbuilder::form_builder_js');
+    }
+
     private static function reset()
     {
         self::$fields = [];
