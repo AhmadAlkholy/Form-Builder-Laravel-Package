@@ -22,14 +22,14 @@ class FormBuilder
             this.newHtml += this.getInputHtml();
         }
         else if (this.state.type == 'raw_html') {
-            this.newHtml += this.state.html;
+            this.newHtml += this.state.value;
         }
         else {
             this.newHtml += this.getContainerHtml();
             this.newHtml += this.getLabelHtml();
             this.newHtml += '<div class="col-sm-12">';
             this.newHtml += this.getElementHtml();
-
+            
             this.newHtml += this.getError();
             this.newHtml += '</div></div>';
         }
@@ -45,8 +45,10 @@ class FormBuilder
     }
 
     update = () => {
-        this.formEl.innerHTML += this.newHtml;
-        return this.reset();
+        if (this.formEl != undefined) {
+            this.formEl.innerHTML += this.newHtml;
+            return this.reset();
+        }
     }
 
     reset = () => {
@@ -70,7 +72,7 @@ class FormBuilder
         this.state.options = this.getData(fieldData, 'options', []);
         this.state.attrs = this.getData(fieldData, 'attrs');
         this.state.error = this.getData(fieldData, 'error');
-        this.state.html = this.getData(fieldData, 'html');
+        this.state.html = this.getData(fieldData, 'value');
     }
 
     getContainerHtml = () => '<div class="form-group '+ this.state.containerClassName +'">';
@@ -116,7 +118,7 @@ class FormBuilder
             html += name + '</label></div>';
         });
         return html;
-    };
+    }
 
     getSelectHtml = () => {
         let html = '<select '+ this.getElAttrs() +'>';
@@ -151,7 +153,7 @@ class FormBuilder
     }
 
     getTextAreaHtml = () => '<textarea '+ this.getElAttrs() +'>'+ this.state.value +'</textarea>';
-
+    
     getInputHtml = () => '<input type="'+ this.state.type +'" '+ this.getElAttrs() +' value="'+ this.state.value +'">';
 
     stringToTitle = (str) => {
@@ -160,10 +162,10 @@ class FormBuilder
     }
 
     getElAttrs = () => {
-        let html = '';
+        let html = ''; 
         if (this.state.name) html += 'name="'+this.state.name+'"';
         if (this.state.id) html += 'id="'+this.state.id+'"';
-        if (this.state.className) html += 'class="form-control '+this.state.className+'"';
+        html += this.state.className ? 'class="form-control '+this.state.className+'"' : 'class="form-control"';
         if (this.state.placeholder) html += 'placeholder="'+this.state.placeholder+'"';
         if (this.state.attrs) html += ' '+this.state.attrs;
         return html;
@@ -172,7 +174,7 @@ class FormBuilder
     html = () => (this.formEl != undefined) ? this.formEl.innerHTML : this.newHtml;
 }
 
-if (window.jQuery) {
+if (window.jQuery) {  
     $.fn.FormBuilder = function(schema=[]){
         this.each(function(){
             return new FormBuilder(schema, $(this)[0]);
