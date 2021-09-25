@@ -16,6 +16,11 @@
         }
     ],
     "require": {},
+    "autoload": {
+        "psr-4": {
+            "Kholy\\FormBuilder\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
