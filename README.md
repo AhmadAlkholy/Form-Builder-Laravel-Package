@@ -37,13 +37,13 @@ html | ```<button>Click Me</button>``` | html code to add if type attribute = ra
 In controller:
 
 ```phpt
-$js = FormBuilder::js();
+$formBuilderJs = FormBuilder::js();
 ```
 
 In blade file:
 
 ```html
-<?php echo $renderJs ?>
+<?php echo $formBuilderJs ?>
 
 <form id="exampleForm">
     {{ csrf_field() }}
