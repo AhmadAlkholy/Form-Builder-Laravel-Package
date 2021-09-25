@@ -32,10 +32,19 @@ attrs | onchange="inputChanged" | any custom attributes you want to add to the i
 error | First Name is required | the error message to show the user if there's an error | No Default Value
 html | ```<button>Click Me</button>``` | html code to add if type attribute = raw_html | No Default Value
 
-## You can also use it in front end inside blade file like so:
+## You can also use it with javascript like so:
+
+In controller:
+
+```phpt
+$js = FormBuilder::js();
+```
+
+In blade file:
 
 ```html
-<script src="{{ URL::asset('plugins/formbuilder/js/FormBuilder.min.js') }}"></script>
+<?php echo $renderJs ?>
+
 <form id="exampleForm">
     {{ csrf_field() }}
 </form>
