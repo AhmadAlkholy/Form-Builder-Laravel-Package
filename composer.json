@@ -1,0 +1,25 @@
+{
+    "name": "kholy/formbuilder",
+    "description": "Form Builder library for creating data oriented html bootstrap forms in Laravel",
+    "keywords": [
+        "Laravel",
+        "Form",
+        "Builder",
+        "Javascript"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmed Alkholy",
+            "email": "ahmedalkholy49@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kholy\\FormBuilder\\FormBuilderServiceProvider"
+            ]
+        }
+    }
+}
