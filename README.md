@@ -5,7 +5,7 @@
 
 Simply in controller:
 ```php
-$form = FormBuilder::form(['action' => 'ffff.php', 'method' => 'POST'])->make([
+$form = FormBuilder::form(['action' => route('test'), 'method' => 'POST'])->make([
     ["type" => "text", "name" => "first_name", "label" => "First Name", "value" => "John"],
     ["type" => "text", "name" => "last_name", "value" => "Doe"]
 ]);
